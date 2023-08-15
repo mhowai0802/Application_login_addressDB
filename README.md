@@ -1,4 +1,4 @@
-# network_project
+# network-login
 
 ## Project setup
 ```

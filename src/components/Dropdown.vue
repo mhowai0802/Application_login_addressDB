@@ -1,7 +1,6 @@
 <template>
   <div class="dropdown" v-if="options">
 
-    <!-- Dropdown Input -->
     <input class="dropdown-input"
       :name="name"
       @focus="showOptions()"
@@ -11,7 +10,6 @@
       :disabled="disabled"
       :placeholder="placeholder" />
 
-    <!-- Dropdown Menu -->
     <div class="dropdown-content"
       v-show="optionsShown">
       <div

@@ -1,7 +1,5 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import axios from 'axios'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
 
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*'
-
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app');
