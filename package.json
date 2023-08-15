@@ -1,5 +1,5 @@
 {
-  "name": "network-login",
+  "name": "frontend-login",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,17 +7,29 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@userfront/core": "^0.6.5",
+    "@vue-formily/formily": "^2.0.0-beta.1",
     "axios": "^1.4.0",
+    "bootstrap": "^5.3.1",
     "cheerio": "^1.0.0-rc.12",
     "core-js": "^3.8.3",
-    "sass-loader": "^13.3.2",
-    "vue": "^3.3.4",
-    "vue-multiselect": "^2.1.7",
+    "prototype": "^0.0.5",
+    "tailwind": "^4.0.0",
+    "vform": "^2.1.2",
+    "vue": "^3.2.13",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "sass": "^1.65.1"
-  }
+    "node-sass": "^9.0.0",
+    "sass": "^1.65.1",
+    "sass-loader": "^13.3.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

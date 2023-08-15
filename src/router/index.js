@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Login from 'C:/Users/user/Desktop/VueJS/network-login/src/components/LoginPage.vue';
-import Dropdown from 'C:/Users/user/Desktop/VueJS/network-login/src/components/Network.vue';
+import Login from 'C:\\Users\\user\\Desktop\\VScode\\frontend-login\\src\\components\\login.vue';
+import Network from 'C:\\Users\\user\\Desktop\\VScode\\frontend-login\\src\\components\\Network.vue';
+import Signup from 'C:\\Users\\user\\Desktop\\VScode\\frontend-login\\src\\components\\Signup.vue';
+import Animation2 from '../components/Animation2.vue'
+
+
+window.isAuthenticated = false;
 
 
 const routes = [
@@ -10,30 +15,43 @@ const routes = [
     component: Login
   },
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dropdown,
+    path: '/network_checking',
+    name: 'Network_checking',
+    component: Network,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/sign_up',
+    name: 'Sign_up',
+    component: Signup
+  },
+  {
+    path: '/ani',
+    component: Animation,
+  },
+  {
+    path: '/ani2',
+    component: Animation2,
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.requiresAuth && !isLoggedIn()) {
-    next('/');
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+
+    if (!window.isAuthenticated) {
+      next({ name: 'Login' }); // Example: redirect to login page
+    } else {
+      next();
+    }
   } else {
     next();
   }
 });
 
-function isLoggedIn() {
-  // Implement your logic to check if the user is logged in
-  // For simplicity, return true for demonstration purposes
-  return true;
-}
 
 export default router;

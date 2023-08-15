@@ -2,11 +2,20 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
+const bodyParser = require('body-parser')
 
 const app = express();
 app.use(express.json());
 
 const secretKey = '123456';
+
+const pool = mysql.createPool({
+  host: 'localhost',
+  user: 'root',
+  password: 'joniwhfe',
+  database: 'Testing'
+});
+
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -26,7 +35,7 @@ app.post('/login', async(req, res) => {
 });
 
 // Protected route
-app.get('/dashboard', verifyToken, (req, res) => {
+app.get('/network_checking', verifyToken, (req, res) => {
   const userId = req.userId;
   const user = users.find(user => user.id === userId);
   res.json({ message: `Welcome, ${user.username}! This is your dashboard.` });
@@ -65,6 +74,29 @@ async function getUserByUsername(username,password) {
     });
   });
 }
+
+app.post('/api/register', (req, res) => {
+  const {username, password} = req.body;
+  const query = 'INSERT INTO login_system (username, password) VALUES (?, ?)';
+  const values = [username, password];
+
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error('Error connecting to the database:', err);
+      return;
+    }
+    connection.query(query, values, (error, results) => {
+      connection.release(); // Release the connection back to the pool
+      if (error) {
+        console.error('Error inserting data:', error);
+      } else {
+        console.log('Data inserted successfully!');
+      }
+    });
+    res.json({ message: 'Data inserted successfully!', data: req.body });
+  });
+});
+
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

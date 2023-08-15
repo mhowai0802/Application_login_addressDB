@@ -41,7 +41,7 @@
   };
   </script>
   
-  <style scoped>
+  <style>
   .login {
     width: 300px;
     margin: 0 auto;

@@ -1,4 +1,4 @@
-# network-login
+# frontend-login
 
 ## Project setup
 ```
