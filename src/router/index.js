@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from 'C:/Users/user/Desktop/VueJS/network-login/src/components/LoginPage.vue';
-import Dropdown from 'C:/Users/user/Desktop/VueJS/network-login/src/App.vue';
+import Dropdown from 'C:/Users/user/Desktop/VueJS/network-login/src/components/Network.vue';
 
 
 const routes = [
